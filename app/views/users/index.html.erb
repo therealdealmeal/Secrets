@@ -1,0 +1,15 @@
+<h1>Users#index</h1>
+<p>Find me in app/views/users/index.html.erb</p>
+
+<form action="/login" method="post">
+  <input type= "hidden" name = "authenticity_token" value = "<%= form_authenticity_token %>">
+  Email:<input type="text" name="email">
+  Password:<input type="text" name="password">
+  <input type='submit' value='Log In'>
+</form><br>
+
+<h3><a href="/users/new">Register</a></h3>
+
+<% if flash %>
+  <h2><%= flash[:error] %></h2>
+<% end %>

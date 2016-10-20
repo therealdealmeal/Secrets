@@ -1,0 +1,19 @@
+<form action="/users/<%=@user.id%>/update" method="post">
+  <input type= "hidden" name = "authenticity_token" value = "<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="patch">
+  Email:<input type="text" name="email" value="<%=@user.email%>">
+  Name:<input type="text" name="name" value="<%=@user.name%>">
+  Password:<input type="text" name="password">
+  Password Confirmation:<input type="text" name="password_confirmation">
+  <input type='submit' value="Update">
+</form>
+
+<form action="/users/<%=@user.id%>/destroy" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Delete Account">
+</form>
+
+<% if flash[:errors] %>
+  <%= @user %>
+<% end %>

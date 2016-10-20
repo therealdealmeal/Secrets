@@ -1,0 +1,32 @@
+<h1><%= @user.name %></h1><br>
+
+<form action="/secrets/create" method="post" id="newsecret">
+  <input type= "hidden" name = "authenticity_token" value = "<%= form_authenticity_token %>">
+  <input type="hidden" name="user_id" value="<%= @user.id %>">
+  New Secret:
+  <br><br>
+  <textarea rows="5" cols="50" name="New_Secret" form="newsecret">
+  </textarea><br><br>
+  <input type="submit" value="Create Secret">
+</form>
+
+<% if @secret %>
+  <% @secret.each do |e| %>
+    <form action="/secrets/destroy" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="userid" value="<%= e.id %>">
+
+      <h2><%= e.content %></h2>
+      <p><%= e.likes.count %> likes</p>
+      <input type="submit" value="Delete">
+    </form>
+  <% end %>
+<% end %>
+
+<form action="/users/logout" method="post">
+  <input type = "hidden" name = "authenticity_token" value = "<%= form_authenticity_token %>">
+  <input type="submit" value="Log Out">
+</form><br>
+
+<h1><a href="/users/<%= @user.id %>/edit">Edit Profile</a></h1>

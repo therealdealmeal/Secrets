@@ -1,0 +1,14 @@
+<form action="/users/create" method="post">
+  <input type= "hidden" name = "authenticity_token" value = "<%= form_authenticity_token %>">
+  Email:<input type="text" name="email">
+  Name:<input type="text" name="name">
+  Password:<input type="text" name="password">
+  Password Confirmation:<input type="text" name="password_confirmation">
+  <input type='submit' value="Join">
+</form><br>
+
+<h3><a href="/sessions/new">Log in</a></h3>
+
+<% if flash[:errors] %>
+  <%= @user %>
+<% end %>
